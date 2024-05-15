@@ -24,10 +24,15 @@ public class TestSuite extends BaseTest {
 
     ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
 
+    DesktopPage desktopPage = new DesktopPage();
+
+    ComputerPage computerP = new ComputerPage();
+
+
+
 
     @Test
-    public void toVerifyUserIsAbleToRegisterSuccessfully()
-    {
+    public void toVerifyUserIsAbleToRegisterSuccessfully() {
         homepage.clickOnRegisterButton();
 
         registrationPage.enterRegistrationDetail();
@@ -35,9 +40,9 @@ public class TestSuite extends BaseTest {
         registrationResultPage.compareActualMsgWithExpectedMessage();
 
     }
+
     @Test
-    public void toVerifyUserIsAbleToLoginAndReferAProduct()
-    {
+    public void toVerifyUserIsAbleToLoginAndReferAProduct() {
         homepage.clickOnRegisterButton();
 
         registrationPage.enterRegistrationDetail();
@@ -59,13 +64,23 @@ public class TestSuite extends BaseTest {
     }
 
     @Test
-    public void toVerifyUserIsAbleToBuildYourOwnComputer()
-    {
+    public void toVerifyUserIsAbleToBuildYourOwnComputer() {
         homepage.clickOnBuildYourOwnComputer();
 
         buildYourOwnComputerPage.chooseAttributesOfComputer();
 
         shoppingCartPage.compareShoppingCartMessage();
+
+    }
+
+
+    @Test
+    public void toVerifyIfTheListIsDisplayed() {
+        homepage.clickOnComputer();
+
+        computerP.clickOnDesktop();
+
+        desktopPage.verifyEachProductShouldHaveATitle();
 
     }
 }

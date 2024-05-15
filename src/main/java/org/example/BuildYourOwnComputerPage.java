@@ -9,6 +9,7 @@ public class BuildYourOwnComputerPage extends Utility
 
     public void chooseAttributesOfComputer()
     {
+
         //select the processor
         selectByValue(By.id("product_attribute_1"), loadProp.getProperty("option1"));
         //select the ram
@@ -24,7 +25,7 @@ public class BuildYourOwnComputerPage extends Utility
         //click on add to cart
         findByElement(By.id("add-to-cart-button-1"));
         //click on shopping cart button
-        findByElement(By.className("cart-label"));
+        findByElement(By.linkText("Shopping cart"));
 
     }
 }

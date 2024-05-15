@@ -84,6 +84,13 @@ public class Utility extends BasePage
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+//method to get Css Value
+    public static String getCssValue(By by,String text)
+    {
+        return driver.findElement(by).getCssValue(text);
+    }
+
+
     public static void waitUntilElementIsVisible(int time, By by)
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));

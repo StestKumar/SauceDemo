@@ -9,7 +9,7 @@ public class ShoppingCartPage extends Utility {
     public void compareShoppingCartMessage() {
 
 
-        String actual = getTextOfElement(By.linkText("Build your own computer"));
+        String actual = getTextOfElement(By.className("product-name"));
         Assert.assertEquals(actual, expectedMessage, "shoppingCartActualMessage");
     }
 

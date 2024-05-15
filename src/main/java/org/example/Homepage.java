@@ -23,6 +23,16 @@ public class Homepage extends Utility
     {
         findByElement(By.linkText("Build your own computer"));
     }
+
+//click on computer
+
+    public void clickOnComputer()
+    {
+    findByElement(By.linkText("Computers"));
+
+    }
+
+
 }
 
 
