@@ -15,24 +15,23 @@ import java.util.concurrent.TimeUnit;
 //Everything Browser Related In Here
 public class BrowserManager extends Utility
 {
-
     LoadProp loadProp = new LoadProp();
-    String browser = loadProp.getProperty("browser");
+
 
     String sauceUrl = loadProp.getProperty("sauceurl");
 
-    //boolean cloud = false;
+    //boolean cloud = true;
     boolean cloud = Boolean.parseBoolean(System.getProperty("cloud"));
+    String browser = System.getProperty("browser");
 
 
     //Creating a Browser
     public void openBrowser()
     {
 
-
         if (cloud)
         {
-            System.out.println("Running on cloud using sauceLab");
+            System.out.println("Running in cloud using sauceLab");
             if (browser.equalsIgnoreCase("Chrome"))
             {
                 System.out.println("Browser is chrome");
@@ -40,11 +39,9 @@ public class BrowserManager extends Utility
                 browserOptions.setPlatformName("Windows 11");
                 browserOptions.setBrowserVersion("latest");
 
-                try
-                {
+                try {
                     driver = new RemoteWebDriver(new URL(sauceUrl), browserOptions);
-                } catch (MalformedURLException e)
-                {
+                } catch (MalformedURLException e) {
                     throw new RuntimeException(e);
                 }
 
@@ -55,33 +52,27 @@ public class BrowserManager extends Utility
                 FirefoxOptions browserOptions = new FirefoxOptions();
                 browserOptions.setPlatformName("Windows 11");
                 browserOptions.setBrowserVersion("123");
-                try
-                {
+                try {
                     driver = new RemoteWebDriver(new URL(sauceUrl), browserOptions);
-                } catch (MalformedURLException e)
-                {
+                } catch (MalformedURLException e) {
                     throw new RuntimeException(e);
                 }
-            } else if(browser.equalsIgnoreCase("Safari"))
-                {
-                    System.out.println("your browser is Safari");
-                    SafariOptions browserOptions = new SafariOptions();
-                    browserOptions.setPlatformName("macOS 12");
-                    browserOptions.setBrowserVersion("16");
+            } else if (browser.equalsIgnoreCase("Safari"))
+            {
+                System.out.println("your browser is Safari");
+                SafariOptions browserOptions = new SafariOptions();
+                browserOptions.setPlatformName("macOS 12");
+                browserOptions.setBrowserVersion("16");
 
-                    try
-                    {
-                        driver = new RemoteWebDriver(new URL(sauceUrl), browserOptions);
-                    } catch (MalformedURLException e)
-                    {
-                        throw new RuntimeException(e);
-                    }
-
-
+                try {
+                    driver = new RemoteWebDriver(new URL(sauceUrl), browserOptions);
+                } catch (MalformedURLException e) {
+                    throw new RuntimeException(e);
                 }
-        } else
 
-        {
+
+            }
+        } else {
             System.out.println("Running on local");
             if (browser.equalsIgnoreCase("chrome"))
             {
@@ -92,12 +83,10 @@ public class BrowserManager extends Utility
             {
                 driver = new FirefoxDriver();
                 System.out.println(loadProp.getProperty("browserName2"));
-            } else if (browser.equalsIgnoreCase("edge"))
-            {
+            } else if (browser.equalsIgnoreCase("edge")) {
                 driver = new EdgeDriver();
                 System.out.println(loadProp.getProperty("browserName3"));
-            } else
-            {
+            } else {
                 System.out.println(loadProp.getProperty("wrongBrowserMessage") + browser);
             }
 
@@ -111,9 +100,7 @@ public class BrowserManager extends Utility
 
     }
     //method to close the browser
-    public void closeBrowser()
-    {
+    public void closeBrowser() {
         driver.quit();
     }
-
 }
